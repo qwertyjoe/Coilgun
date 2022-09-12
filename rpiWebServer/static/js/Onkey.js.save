@@ -1,0 +1,100 @@
+$(document).ready(function () {
+    let forward = 0;
+    
+    document.onkeydown = function (e) {
+        let ImageHeight = window.innerHeight;
+        let ImageWidth = ImageHeight / 3 * 4 / 2;
+        let Scale = ImageHeight / 360;
+        // W key
+        if (e.keyCode == 87) {
+            fetch('/?method=forward')
+        }
+        // S key
+        if (e.keyCode == 83) {
+            fetch('/?method=backward')
+        }
+        // D key
+        if (e.keyCode == 68) {
+            fetch('/?method=right')
+        }
+        // A key
+        if (e.keyCode == 65) {
+            fetch('/?method=left')
+        }
+        // E key
+        if (e.keyCode == 69) {
+            fetch('/?method=turnright')
+        }
+        // Q key
+        if (e.keyCode == 81) {
+            fetch('/?method=turnleft')
+        }
+        // J key
+        if (e.keyCode == 74) {
+            fetch('/?method=shot')
+        }
+        // L key
+        if (e.keyCode == 76) {
+            fetch('/?method=re');
+        }
+        // K key
+        if (e.keyCode == 75) {
+            fetch('/?method=re stop')
+        }
+        // Enter key
+        if (e.keyCode == 13) {
+            getCoordinates(1);
+            //getCoordinates(ImageWidth, ImageHeight / 2, Scale, 1);
+        }
+        // Space key
+        if (e.keyCode == 32) {
+            //getCoordinates(ImageWidth, ImageHeight / 2, Scale, 0);
+            getCoordinates(0);
+        }
+        //number keyboard up (boxsize big)
+        if (e.keyCode == 38){
+            BoxAdjust(0);
+        }
+        //number keyboard down (boxsize small)
+        if (e.keyCode == 40){
+            BoxAdjust(1);
+        }
+    };
+    document.onkeyup = function (e) {
+        if (e.keyCode == 87 || e.keyCode == 83 || e.keyCode == 65 || e.keyCode == 68 ) {
+            fetch('/?method=stop');
+        }
+        // Shift key
+        if (e.keyCode == 16) {
+            fetch('/?method=switch')
+        }
+    };
+    document.onkeydown = function(e) {
+        var turnleft=0,turnright=0,up=0,down=0;
+        //number keyboard 4
+        if (e.keyCode == 100){
+            turnleft = 1;
+        }else{
+            turnleft = 0;
+        }
+        //number keyboard 6
+        if (e.keyCode == 102){
+            turnright = 1;
+        }else{
+            turnright = 0;
+        }
+        //number keyboard 8
+        if (e.keyCode == 104){
+            up = 1;
+        }else{
+            up = 0;
+        }
+        //number keyboard 2
+        if (e.keyCode == 98){
+            down = 1;
+        }else{
+            down = 0;
+        }
+        MotorAdjust(turnleft,turnright,up,down);
+    }
+});

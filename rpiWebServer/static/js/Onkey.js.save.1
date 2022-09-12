@@ -1,0 +1,132 @@
+$(document).ready(function () {
+    let Forward = 0;
+    let Back = 0;
+    let TurnRight = 0;
+    let TurnLeft = 0;
+    let Right = 0 ;
+    let Left = 0;
+    let ReLoad = 0;
+    let Shot = 0;
+    document.onkeydown = function (e) {
+        let ImageHeight = window.innerHeight;
+        let ImageWidth = ImageHeight / 3 * 4 / 2;
+        let Scale = ImageHeight / 360;
+        // W key
+        if (e.keyCode == 87 && Forward == 0) {
+            fetch('/?method=forward');
+            Forward = 1;
+        }
+        // S key
+        if (e.keyCode == 83 && Back == 0) {
+            fetch('/?method=backward');
+            Back = 1;
+        }
+        // D key
+        if (e.keyCode == 68 && Right == 0) {
+            fetch('/?method=right');
+            Right = 1;
+        }
+        // A key
+        if (e.keyCode == 65 && Left == 0) {
+            fetch('/?method=left');
+            Left = 1;
+        }
+        // E key
+        if (e.keyCode == 69 && TurnRight == 0) {
+            fetch('/?method=turnright');
+            TurnRight = 1;
+        }
+        // Q key
+        if (e.keyCode == 81 && TurnLeft == 0) {
+            fetch('/?method=turnleft');
+            TurnLeft = 1;
+        }
+        // J key
+        if (e.keyCode == 74 && Shot ==0) {
+            fetch('/?method=shot');
+            Shot = 1;
+        }
+        // L key
+        if (e.keyCode == 76 && Reload ==0) {
+            fetch('/?method=re');
+            Reload = 1;
+        }
+        // K key
+        if (e.keyCode == 75) {
+            fetch('/?method=re stop')
+        }
+        // Enter key
+        if (e.keyCode == 13) {
+            getCoordinates(1);
+            //getCoordinates(ImageWidth, ImageHeight / 2, Scale, 1);
+        }
+        // Space key
+        if (e.keyCode == 32) {
+            //getCoordinates(ImageWidth, ImageHeight / 2, Scale, 0);
+            getCoordinates(0);
+        }
+        //number keyboard up (boxsize big)
+        if (e.keyCode == 38){
+            BoxAdjust(0);
+        }
+        //number keyboard down (boxsize small)
+        if (e.keyCode == 40){
+            BoxAdjust(1);
+        }
+    };
+    document.onkeyup = function (e) {
+        if (e.keyCode == 87){
+            Forward = 0;
+        }
+        if (e.keyCode == 83){
+            Back = 0;
+        }
+        if (e.keyCode == 68){
+            Right = 0;
+        }
+        if (e.keyCode == 65){
+            Left = 0;
+        }
+        if (e.keyCode == 69){
+            TurnRight = 0;
+        }
+        if (e.keyCode == 81){
+            TurnLeft = 0;
+        }
+        if (e.keyCode == 87 || e.keyCode == 83 || e.keyCode == 65 || e.keyCode == 68 || d ) {
+            fetch('/?method=stop');
+        }
+        // Shift key
+        if (e.keyCode == 16) {
+            fetch('/?method=switch')
+        }
+    };
+    document.onkeydown = function(e) {
+        var turnleft=0,turnright=0,up=0,down=0;
+        //number keyboard 4
+        if (e.keyCode == 100){
+            turnleft = 1;
+        }else{
+            turnleft = 0;
+        }
+        //number keyboard 6
+        if (e.keyCode == 102){
+            turnright = 1;
+        }else{
+            turnright = 0;
+        }
+        //number keyboard 8
+        if (e.keyCode == 104){
+            up = 1;
+        }else{
+            up = 0;
+        }
+        //number keyboard 2
+        if (e.keyCode == 98){
+            down = 1;
+        }else{
+            down = 0;
+        }
+        MotorAdjust(turnleft,turnright,up,down);
+    }
+});

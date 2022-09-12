@@ -1,0 +1,19 @@
+body{
+    margin:0px;
+}
+img {
+    display: block;
+    margin-left: 50%;
+    margin-right: 50%;
+}
+#main {
+    position: relative;
+}
+#ShowBox{
+    position: absolute;
+    z-index: 2;
+    background: rgb(255, 255, 255,0.5);
+}
+#bg{
+    background-attachment: fixed;
+}

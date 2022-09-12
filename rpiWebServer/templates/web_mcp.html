@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Fire Picture</title>
+	<link rel="stylesheet" href="../static/css/image.css">
+	<script src="../static/js/jquery-3.6.0.min.js"></script>
+	<script src="../static/js/testposition.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="../static/js/Onkey.js"></script>
+	<script src="../static/js/SizeAdjust.js"></script>
+	<script src="../static/js/AngleAdjust.js"></script>
+	<!-- <script src="../static/js/ImageSize.js"></script> 
+	<script src="../static/js/GetVolt.js"></script>-->
+	<script src="../static/js/GetVolt.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="ShowBox">
+			<h1 id="volt">Volt:{{ volt }}</h1>
+		</div>
+	</div>
+	<img class="camera-bg" id="bg" class="center"
+		src="{{ url_for('video_feed') }}" height="480" width="640">
+</body>
+
+</html>
